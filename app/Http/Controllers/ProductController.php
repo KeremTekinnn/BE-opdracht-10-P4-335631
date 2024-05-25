@@ -18,7 +18,8 @@ class ProductController extends Controller
             ->join('product_users', 'users.id', '=', 'product_users.user_id')
             ->join('products', 'product_users.product_id', '=', 'products.id')
             ->join('product_end_date_deliveries', 'products.id', '=', 'product_end_date_deliveries.product_id')
-            ->select('products.id', 'users.name as user_name', 'users.contact_person', 'contacts.city as city', 'products.name as product_name', 'product_end_date_deliveries.end_date_delivery');
+            ->select('products.id', 'users.name as user_name', 'users.contact_person', 'contacts.city as city', 'products.name as product_name', 'product_end_date_deliveries.end_date_delivery')
+            ->orderBy('product_end_date_deliveries.end_date_delivery', 'asc');
 
         if ($startDate && $endDate) {
             $query->whereBetween('product_end_date_deliveries.end_date_delivery', [$startDate, $endDate]);

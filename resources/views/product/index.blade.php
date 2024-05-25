@@ -52,7 +52,7 @@
                         <td class="border-2 border-gray-400 px-4 py-2">{{ $product->contact_person }}</td>
                         <td class="border-2 border-gray-400 px-4 py-2">{{ $product->product_name }}</td>
                         <td class="border-2 border-gray-400 px-4 py-2">{{ $product->city }}</td>
-                        <td class="border-2 border-gray-400 px-4 py-2">{{ $product->end_date_delivery }}</td>
+                        <td class="border-2 border-gray-400 px-4 py-2">{{ date('d/m/Y', strtotime($product->end_date_delivery)) }}</td>
                         <td class="border-2 border-gray-400 px-4 py-2">
                             <form method="GET" action="{{ route('product.show', ['product' => $product->id]) }}">
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
